@@ -19,4 +19,5 @@ RUN npm ci --only=production && npm cache clean --force
 FROM node:16-alpine As production
 COPY --from=build /docker-app/node_modules ./node_modules
 COPY --from=build /docker-app/dist ./dist
+EXPOSE 4000
 CMD [ "node", "dist/main.js" ]
